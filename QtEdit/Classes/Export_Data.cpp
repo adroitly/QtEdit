@@ -149,6 +149,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 			{
 				_anima->writeString("defult");
 			}
+			float _tempScall = 1;
 			for (j = 0; j < _tempVector->Sprites.size(); j++)
 			{
 				_tempSpritePoint = _tempVector->Sprites.at(j);
@@ -161,6 +162,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 					{
 						width = abs(_tempSpritePoint->bodyVertices[0].x - _tempSpritePoint->bodyVertices[2].x);
 						height = abs(_tempSpritePoint->bodyVertices[0].y - _tempSpritePoint->bodyVertices[2].y);
+						_tempScall = _tempSpritePoint->_ScallX;
 						break;
 					}
 				}
@@ -170,6 +172,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 					{
 						width = abs(_tempSpritePoint->injureVertices[0].x - _tempSpritePoint->injureVertices[2].x);
 						height = abs(_tempSpritePoint->injureVertices[0].y - _tempSpritePoint->injureVertices[2].y);
+						_tempScall = _tempSpritePoint->_ScallX;
 						break;
 					}
 				}
@@ -179,6 +182,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 					{
 						width = abs(_tempSpritePoint->attackVertices[0].x - _tempSpritePoint->attackVertices[2].x);
 						height = abs(_tempSpritePoint->attackVertices[0].y - _tempSpritePoint->attackVertices[2].y);
+						_tempScall = _tempSpritePoint->_ScallX;
 						break;
 					}
 				}
@@ -188,6 +192,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 					{
 						width = abs(_tempSpritePoint->effectVertices[0].x - _tempSpritePoint->effectVertices[2].x);
 						height = abs(_tempSpritePoint->effectVertices[0].y - _tempSpritePoint->effectVertices[2].y);
+						_tempScall = _tempSpritePoint->_ScallX;
 						break;
 					}
 				}
@@ -287,7 +292,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 				_anima->writeFloat(time);
 				_anima->writeFloat(x);
 				_anima->writeFloat(y);
-				_anima->writeFloat(my_Scall);
+				_anima->writeFloat(my_Scall / _tempScall);
 				_anima->writeFloat(rotation);
 				_anima->writeBool(enabled);
 			}

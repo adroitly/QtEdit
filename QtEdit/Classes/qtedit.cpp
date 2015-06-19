@@ -1405,6 +1405,10 @@ void QtEdit::setPerWiget(int max)
 void QtEdit::AnimationSlderChange()
 {
 	double a = ui.PencentageSlider->value();
+	if (a >= sliderButton.size())
+	{
+		return;
+	}
 	btn = sliderButton.at(a * 1);
 	SlderAnimationAction();
 	a *= 0.01;
