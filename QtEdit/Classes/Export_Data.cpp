@@ -106,6 +106,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 			{
 				num[2] ++;
 			}
+
 			if (_tempSpritePoint->Is_AttFra && num[3] == 0)
 			{
 				num[3] = 1;
@@ -115,6 +116,7 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 			{
 				num[3] ++;
 			}
+
 			if (_tempSpritePoint->Is_EffFra && num[4] == 0)
 			{
 				num[4] = 1;
@@ -193,11 +195,11 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 			//shapeType
 			if (k == 0)
 			{
-				_anima->writeUnsignedChar('0');
+				_anima->writeUnsignedChar(0);
 			}
 			else
 			{
-				_anima->writeUnsignedChar('1');
+				_anima->writeUnsignedChar(1);
 				//with,height
 				_anima->writeFloat(width);
 				_anima->writeFloat(height);
@@ -290,9 +292,9 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 				_anima->writeBool(enabled);
 			}
 		}
-		_ByteArray->writeUnsignedShort(_anima->getLength());
+		_ByteArray->writeUnsignedInt(_anima->getLength());
 		_ByteArray->writeBytes(_anima);
-		delete _anima;
+		//delete _anima;
 	}
 	//ofstream fout(file_name, ios::binary);
 	//ofstream f();

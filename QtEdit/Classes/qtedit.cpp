@@ -406,6 +406,7 @@ void QtEdit::saveAllData()
 {
 	if (is_import && saveDataName != NULL && !saveDataName.isNull())
 	{
+		this->setWindowTitle(this->windowTitle().split("*").at(0));
 		_Export_Data = Export_Data::getInstence();
 		_Export_Data->DrawDataTo_Qtedit();
 		_Export_Data->Dosave_JsonData(saveDataName.toStdString().c_str(), spritesPoints, true);
