@@ -294,11 +294,19 @@ void Export_Data::Dosave_ExportByte(const char * file_name, const vector<MyVecto
 		_ByteArray->writeBytes(_anima);
 		delete _anima;
 	}
-	//cocos2d::log("%s", _ByteArray->getBytes());
-	ofstream fout(file_name, ios::binary);
-	fout << _ByteArray->getBytes();
-	fout.flush();
-	fout.close();
+	//ofstream fout(file_name, ios::binary);
+	//ofstream f();
+	//fout << _ByteArray->getBytes();
+	//fout.flush();
+	//fout.close();
+	FILE *fp;
+	fp = fopen(file_name, "wb");
+	if (fp == NULL)
+	{
+		log("Open %s Error", file_name);;
+	}
+	fwrite(_ByteArray->getBytes(), _ByteArray->getLength(), 1, fp);
+	fclose(fp);
 	delete _ByteArray;
 }
 
